@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+}
+
+/* GRID WITH 5 COLUMNS */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* BOX STYLE */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.box:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}

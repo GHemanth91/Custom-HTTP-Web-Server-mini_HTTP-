@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Validation Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        width: 350px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Register</h2>
+
+      <!-- IMPORTANT: action must match your server -->
+      <form method="POST" action="/submit" onsubmit="return validateForm();">
+        <input type="text" id="name" name="name" placeholder="Enter Name" />
+        <div class="error" id="nameError"></div>
+
+        <input type="email" id="email" name="email" placeholder="Enter Email" />
+        <div class="error" id="emailError"></div>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter Password"
+        />
+        <div class="error" id="passwordError"></div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        let valid = true;
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value.trim();
+
+        // Reset errors
+        document.getElementById("nameError").innerText = "";
+        document.getElementById("emailError").innerText = "";
+        document.getElementById("passwordError").innerText = "";
+
+        // Name validation
+        if (name === "") {
+          document.getElementById("nameError").innerText = "Name is required";
+          valid = false;
+        }
+
+        // Email validation
+        if (!email.includes("@")) {
+          document.getElementById("emailError").innerText = "Enter valid email";
+          valid = false;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+          document.getElementById("passwordError").innerText =
+            "Password must be at least 6 characters";
+          valid = false;
+        }
+
+        return valid;
+      }
+    </script>
+  </body>
+</html>
